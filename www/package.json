@@ -9,7 +9,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@davidway/gatsby-theme-novela": "^0.23.0",
+    "@davidway/gatsby-theme-novela": "^0.24.3",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.41",
     "gatsby-plugin-google-analytics": "^2.1.6",

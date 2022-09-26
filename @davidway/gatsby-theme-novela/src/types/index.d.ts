@@ -39,6 +39,7 @@ export interface IAuthor {
 
 export interface IArticle {
   slug: string;
+  encrypted: boolean,
   authors: IAuthor[];
   excerpt: string;
   body: string;

@@ -16,7 +16,14 @@ module.exports = ({
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-encrypt`
+        ],
+      },
+    },
     `gatsby-transformer-yaml`,
     `gatsby-plugin-theme-ui`,
     {
@@ -172,6 +179,7 @@ module.exports = ({
               rel: 'noreferrer', // eslint-disable-line unicorn/prevent-abbreviations
             },
           },
+          { resolve: `gatsby-remark-encrypt` },
         ],
         remarkPlugins: [require(`remark-slug`)], // eslint-disable-line global-require
       },

@@ -67,7 +67,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     }
   `);
 
-  console.log(sources);
+  console.log("sources", sources);
   // Defaulting to look at the local MDX files as sources.
   const { local = true } = sources;
 
@@ -99,9 +99,11 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
         normalize.local.authors,
       );
 
-      dataSources.local.articles = localArticles.data.articles.edges.map(
-        normalize.local.articles,
-      );
+      if (localArticles && localArticles.data) {
+        dataSources.local.articles = localArticles.data.articles.edges.map(
+          normalize.local.articles,
+        );
+      }
     } catch (error) {
       console.error(error);
     }
@@ -195,6 +197,17 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     if (next.length === 1 && articlesThatArentSecret.length !== 2)
       next = [...next, articlesThatArentSecret[0]];
     if (articlesThatArentSecret.length === 1) next = [];
+
+
+    console.log(createPage)
+
+    console.log('>>>')
+    console.log('>>>')
+    console.log('>>>')
+    console.log(article)
+    console.log('>>>')
+    console.log('>>>')
+    console.log('>>>')
 
     createPage({
       path: article.slug,

@@ -3,6 +3,7 @@ module.exports = ({ actions }) => {
     type Article implements Node {
       id: ID!
       slug: String!
+      encrypted: Boolean!
       title: String!
       date: Date! @dateformat
       author: String!
@@ -11,6 +12,7 @@ module.exports = ({ actions }) => {
       hero: File @fileByRelativePath
       timeToRead: Int
       canonical_url: String
+      password: String
     }
   `);
 };

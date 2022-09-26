@@ -23,6 +23,7 @@ module.exports.local = {
           id
           postType
           slug
+          encrypted
           secret
           title
           author

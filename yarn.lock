@@ -5072,6 +5072,11 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+crypto-js@^4.0.0, crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
+
 crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
@@ -7568,6 +7573,15 @@ gatsby-remark-embed-video@^2.0.1:
     get-video-id "^3.1.4"
     remark-burger "^1.0.1"
     unist-util-visit "^2.0.0"
+
+gatsby-remark-encrypt@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-encrypt/-/gatsby-remark-encrypt-1.1.0.tgz#c1ede084b37ecfb41c24fc8fb9139f4d71f8b1c7"
+  integrity sha512-a+SmhZ/ip/M+xJH2hp7WX12oWfENTH27ONCcZ75LCm4DyoVIjq0B4VV8I09LHgov7WdLiiwUqWInQOpFzGo2qA==
+  dependencies:
+    crypto-js "^4.0.0"
+    hast-util-to-html "^4.0.1"
+    mdast-util-to-hast "^3.0.4"
 
 gatsby-remark-external-links@0.0.4:
   version "0.0.4"

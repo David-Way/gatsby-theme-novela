@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import throttle from "lodash/throttle";
 import { graphql, useStaticQuery } from "gatsby";
+import CryptoJS from 'crypto-js'
 
 import Layout from "@components/Layout";
 import MDXRenderer from "@components/MDX";
@@ -37,10 +38,16 @@ const siteQuery = graphql`
 `;
 
 const Article: Template = ({ pageContext, location }) => {
+  console.log('pageContext.article', pageContext.article)
   const contentSectionRef = useRef<HTMLElement>(null);
 
   const [hasCalculated, setHasCalculated] = useState<boolean>(false);
   const [contentHeight, setContentHeight] = useState<number>(0);
+
+  // the decrypted content
+  const [decrypted, setDecrypted] = useState('')
+  // save user input
+  const [password, setPassword] = useState('')
 
   const results = useStaticQuery(siteQuery);
   const name = results.allSite.edges[0].node.siteMetadata.name;
@@ -81,7 +88,7 @@ const Article: Template = ({ pageContext, location }) => {
     return () => window.removeEventListener("resize", calculateBodySize);
   }, []);
 
-  return (
+  return true ? (
     <Layout>
       <ArticleSEO article={article} authors={authors} location={location} />
       <ArticleHero article={article} authors={authors} />
@@ -105,6 +112,23 @@ const Article: Template = ({ pageContext, location }) => {
         </NextArticle>
       )}
     </Layout>
+  ) : (
+    <section itemProp="articleBody">
+      <input
+        type='password'
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        onKeyUp={e => {
+          if (e.keyCode === 13) {
+            try {
+              setDecrypted(CryptoJS.AES.decrypt(html, password).toString(CryptoJS.enc.Utf8))
+            } catch (e) {
+              alert('password error')
+            }
+          }
+        }}
+      />
+    </section>
   );
 };
 
